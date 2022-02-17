@@ -1,0 +1,211 @@
+{
+  "fields": [
+    {
+      "name": "_id",
+      "path": "_id",
+      "count": 9,
+      "types": [
+        {
+          "name": "ObjectID",
+          "bsonType": "ObjectID",
+          "path": "_id",
+          "count": 9,
+          "values": [
+            "620d91d57ae1ba5e161784b1",
+            "620d91d57ae1ba5e161784b4",
+            "620d91d57ae1ba5e161784ad",
+            "620d91d57ae1ba5e161784b0",
+            "620d91d57ae1ba5e161784b2",
+            "620d91d57ae1ba5e161784ae",
+            "620d91d57ae1ba5e161784af",
+            "620d91d57ae1ba5e161784b3",
+            "620d91d57ae1ba5e161784ac"
+          ],
+          "total_count": 0,
+          "probability": 1,
+          "unique": 9,
+          "has_duplicates": false
+        }
+      ],
+      "total_count": 9,
+      "type": "ObjectID",
+      "has_duplicates": false,
+      "probability": 1
+    },
+    {
+      "name": "category",
+      "path": "category",
+      "count": 9,
+      "types": [
+        {
+          "name": "String",
+          "bsonType": "String",
+          "path": "category",
+          "count": 9,
+          "values": [
+            "LOB",
+            "PRODUCT",
+            "Common",
+            "LOB",
+            "LOB",
+            "Common",
+            "LOB",
+            "PRODUCT",
+            "Common"
+          ],
+          "total_count": 0,
+          "probability": 1,
+          "unique": 3,
+          "has_duplicates": true
+        }
+      ],
+      "total_count": 9,
+      "type": "String",
+      "has_duplicates": true,
+      "probability": 1
+    },
+    {
+      "name": "lob",
+      "path": "lob",
+      "count": 9,
+      "types": [
+        {
+          "name": "Null",
+          "bsonType": "Null",
+          "path": "lob",
+          "count": 5,
+          "total_count": 0,
+          "probability": 0.5555555555555556,
+          "unique": 1,
+          "has_duplicates": true
+        },
+        {
+          "name": "String",
+          "bsonType": "String",
+          "path": "lob",
+          "count": 4,
+          "values": [
+            "AUTO",
+            "AUTO",
+            "AUTO",
+            "AUTO"
+          ],
+          "total_count": 0,
+          "probability": 0.4444444444444444,
+          "unique": 1,
+          "has_duplicates": true
+        }
+      ],
+      "total_count": 9,
+      "type": [
+        "Null",
+        "String"
+      ],
+      "has_duplicates": true,
+      "probability": 1
+    },
+    {
+      "name": "product",
+      "path": "product",
+      "count": 9,
+      "types": [
+        {
+          "name": "Null",
+          "bsonType": "Null",
+          "path": "product",
+          "count": 7,
+          "total_count": 0,
+          "probability": 0.7777777777777778,
+          "unique": 1,
+          "has_duplicates": true
+        },
+        {
+          "name": "String",
+          "bsonType": "String",
+          "path": "product",
+          "count": 2,
+          "values": [
+            "Guidewire",
+            "Duckcreek"
+          ],
+          "total_count": 0,
+          "probability": 0.2222222222222222,
+          "unique": 2,
+          "has_duplicates": false
+        }
+      ],
+      "total_count": 9,
+      "type": [
+        "Null",
+        "String"
+      ],
+      "has_duplicates": true,
+      "probability": 1
+    },
+    {
+      "name": "testCase",
+      "path": "testCase",
+      "count": 9,
+      "types": [
+        {
+          "name": "String",
+          "bsonType": "String",
+          "path": "testCase",
+          "count": 9,
+          "values": [
+            "Add Vehicles less than 5 for a fleet policy",
+            "Verify Guidewire Notice Of Loss",
+            "Test surcharge states and monopolistic states",
+            "Verify different physical damage premiums",
+            "Add Vehicles more than 5 for a non-fleet policy",
+            "Verify AU as a package policy",
+            "Verify different liability premiums",
+            "Verify Claims Notice Of Loss",
+            "Test all insurance companies / Agents"
+          ],
+          "total_count": 0,
+          "probability": 1,
+          "unique": 9,
+          "has_duplicates": false
+        }
+      ],
+      "total_count": 9,
+      "type": "String",
+      "has_duplicates": false,
+      "probability": 1
+    },
+    {
+      "name": "type",
+      "path": "type",
+      "count": 9,
+      "types": [
+        {
+          "name": "String",
+          "bsonType": "String",
+          "path": "type",
+          "count": 9,
+          "values": [
+            "Fleet",
+            "Claim FNOL",
+            "States",
+            "Physical Damage",
+            "Non Fleet",
+            "Package policy",
+            "Liabilty",
+            "Claim FNOL",
+            "Insurance Company"
+          ],
+          "total_count": 0,
+          "probability": 1,
+          "unique": 8,
+          "has_duplicates": true
+        }
+      ],
+      "total_count": 9,
+      "type": "String",
+      "has_duplicates": true,
+      "probability": 1
+    }
+  ],
+  "count": 9
+}
