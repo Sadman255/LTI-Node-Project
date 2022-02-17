@@ -4,7 +4,8 @@ const mongoose = require("mongoose");
 const passport = require("passport");
 
 const Category = require("../../models/Category");
-const validateCategoryInput = require("../../validation/categories");
+const validateCategorySearchInput = require("../../validation/categorySearch");
+const validateCategoryCreateInput = require("../../validation/categoryCreate");
 
 
 // const searchCategories = ( category) =>{
@@ -19,55 +20,63 @@ const validateCategoryInput = require("../../validation/categories");
 
 router.post("/search", (req, res) => {
 
-    const {errors, isValid} = validateCategoryInput(req.body)
+    const {errors, isValid} = validateCategorySearchInput(req.body)
 
     if(!isValid){
+        console.log('entered error')
         return res.status(400).json(errors);
     }
 
-    if (req.body.category == "Common" && req.body.type == null) {
-      Category.find({ category: req.body.category})
+    if (req.body.category.toLowerCase() === "common" && !req.body.type) {
+      Category.find({ $regex: new RegExp(req.body.category, "i") })
         .then((categories) => res.json(categories))
         .catch((err) =>
           res.status(404).json({ nocategoriesfound: "No Categories found" })
         );
-    } else if (req.body.category == "Common" && req.body.type) {
-      Category.find({ category: req.body.category, type: req.body.type })
-        .then((categories) => res.json(categories))
-        .catch((err) =>
-          res.status(404).json({ nocategoriesfound: "No Categories found" })
-        );
-    } else if (req.body.category == "LOB" && req.body.type == null) {
-      Category.find({ category: req.body.category, lob: req.body.lob })
-        .then((categories) => res.json(categories))
-        .catch((err) =>
-          res.status(404).json({ nocategoriesfound: "No Categories found" })
-        );
-    } else if (req.body.category == "LOB" && req.body.type) {
+    } else if (req.body.category.toLowerCase() === "common" && req.body.type) {
+        console.log("entered")
       Category.find({
-        category: req.body.category,
-        lob: req.body.lob,
-        type: req.body.type,
+        category: { $regex: new RegExp(req.body.category, "i") },
+        type: { $regex: new RegExp(req.body.type, "i") },
       })
         .then((categories) => res.json(categories))
         .catch((err) =>
           res.status(404).json({ nocategoriesfound: "No Categories found" })
         );
-    } else if (req.body.category == "PRODUCT" && req.body.type == null) {
+    } else if (req.body.category.toLowerCase() === "lob" &&  req.body.lob && !req.body.type) {
       Category.find({
-        category: req.body.category,
-        product: req.body.product,
-        
+        category: { $regex: new RegExp(req.body.category, "i") },
+        lob: { $regex: new RegExp(req.body.lob, "i") },
       })
         .then((categories) => res.json(categories))
         .catch((err) =>
           res.status(404).json({ nocategoriesfound: "No Categories found" })
         );
-    } else if (req.body.category == "PRODUCT" && req.body.type) {
+    } else if (req.body.category.toLowerCase() === "lob" && req.body.lob && req.body.type) {
       Category.find({
-        category: req.body.category,
-        product: req.body.product,
-        type: req.body.type,
+        category: { $regex: new RegExp(req.body.category, "i") },
+        lob: { $regex: new RegExp(req.body.lob, "i") },
+        type: { $regex: new RegExp(req.body.type, "i") },
+      })
+        .then((categories) => res.json(categories))
+        .catch((err) =>
+          res.status(404).json({ nocategoriesfound: "No Categories found" })
+        );
+    } else if (req.body.category.toLowerCase() === "product" && req.body.product && !req.body.type) {
+        console.log("entered product")
+      Category.find({
+        category: { $regex: new RegExp(req.body.category, "i") },
+        product: { $regex: new RegExp(req.body.product, "i") },
+      })
+        .then((categories) => res.json(categories))
+        .catch((err) =>
+          res.status(404).json({ nocategoriesfound: "No Categories found" })
+        );
+    } else if (req.body.category.toLowerCase() === "product" && req.body.product && req.body.type) {
+      Category.find({
+        category: { $regex: new RegExp(req.body.category, "i") },
+        product: { $regex: new RegExp(req.body.product, "i") },
+        type: { $regex: new RegExp(req.body.type, "i") },
       })
         .then((categories) => res.json(categories))
         .catch((err) =>
@@ -78,6 +87,28 @@ router.post("/search", (req, res) => {
   
     
 });
+
+router.post("/create",(req, res) => {
+    const { errors, isValid } = validateCategoryCreateInput(req.body);
+
+    if (!isValid) {
+      return res.status(400).json(errors);
+    }
+
+     Category.init();
+
+    const newCategory = new Category({
+    _id: new mongoose.Types.ObjectId(),
+      category: req.body.category,
+      lob: req.body.lob,
+      product: req.body.product,
+      type: req.body.type,
+      testCase: req.body.testCase
+    },{ collection: 'TestScenarios' });
+
+    newCategory.save().then((category) => res.json(category));
+  }
+);
 
 
 module.exports = router;

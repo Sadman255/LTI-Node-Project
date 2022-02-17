@@ -2,6 +2,10 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const CategorySchema = new Schema({
+  _id: {
+    type: mongoose.Schema.ObjectId,
+    required: false,
+  },
   category: {
     type: String,
     required: true,
@@ -12,16 +16,16 @@ const CategorySchema = new Schema({
   },
   type: {
     type: String,
-    required:true,
+    required: true,
   },
   testCase: {
     type: String,
-    required:true
+    required: false,
   },
   product: {
     type: String,
-    required:false
+    required: false,
   },
 });
 
-module.exports = Category = mongoose.model("category", CategorySchema);
+module.exports = Category = mongoose.model("TestScenarios", CategorySchema, "TestScenarios");
