@@ -28,7 +28,7 @@ router.post("/search", (req, res) => {
     }
 
     if (req.body.category.toLowerCase() === "common" && !req.body.type) {
-      Category.find({ $regex: new RegExp(req.body.category, "i") })
+      Category.find({ category: {$regex: new RegExp(req.body.category, "i") }})
         .then((categories) => res.json(categories))
         .catch((err) =>
           res.status(404).json({ nocategoriesfound: "No Categories found" })
