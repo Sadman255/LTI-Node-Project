@@ -30,6 +30,14 @@ module.exports = function validateCategoryCreateInput(data) {
   if (data.category.toLowerCase() == "lob" && Validator.isEmpty(data.lob)) {
     errors.text = " Lob field is required if the category is lob ";
   }
+  if(data.category.toLowerCase() == "common" && data.product){
+      errors.text = "Product should not exist if category is common"
+      //console.log("entered common validation if product provided")
+  }
+  if (data.category.toLowerCase() == "common" && data.lob) {
+    errors.text = "Lob should not exist if category is common";
+    //console.log("enter common validation if lob provided")
+  }
 
 
   return {

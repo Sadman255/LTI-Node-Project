@@ -28,6 +28,7 @@ router.post("/search", (req, res) => {
     }
 
     if (req.body.category.toLowerCase() === "common" && !req.body.type) {
+        //console.log("entered category=common but no type")
       Category.find({ category: {$regex: new RegExp(req.body.category, "i") }})
         .then((categories) => res.json(categories))
         .catch((err) =>
