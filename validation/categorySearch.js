@@ -36,11 +36,11 @@ module.exports = function validateCategorySearchInput(data) {
 
   if (data.category.toLowerCase() == "common" && data.product) {
     errors.text = "Product should not exist if category is common";
-    console.log("entered common validation if product provided");
+    //console.log("entered common validation if product provided");
   }
   if (data.category.toLowerCase() == "common" && data.lob) {
     errors.text = "Lob should not exist if category is common";
-    console.log("enter common validation if lob provided");
+    //console.log("enter common validation if lob provided");
   }
 
   return {
