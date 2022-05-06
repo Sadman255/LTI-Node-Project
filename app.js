@@ -3,7 +3,7 @@ const app = express();
 const db = require("./config/keys").mongoURI;
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
-const categories = require("./routes/api/categories");
+const products = require("./routes/api/products");
 // const passport = require("passport");
 
 
@@ -21,7 +21,7 @@ app.get("/", (req, res) => res.send("Hello World!!"));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.use("/api/categories", categories);
+app.use("/api/products", products);
 
 
 

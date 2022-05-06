@@ -1,12 +1,16 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const CategorySchema = new Schema({
+const ProductSchema = new Schema({
   _id: {
     type: mongoose.Schema.ObjectId,
     required: false,
   },
-  category: {
+  testCaseId: {
+    type: mongoose.Schema.ObjectId,
+    required: false,
+  },
+  product: {
     type: String,
     required: true,
   },
@@ -14,7 +18,7 @@ const CategorySchema = new Schema({
     type: String,
     required: false,
   },
-  type: {
+  module: {
     type: String,
     required: true,
   },
@@ -22,10 +26,14 @@ const CategorySchema = new Schema({
     type: String,
     required: false,
   },
-  product: {
-    type: String,
+  testStep: {
+    type: Array,
     required: false,
   },
+  expectedResult: {
+    type: Array,
+    required: false,
+  }
 });
 
-module.exports = Category = mongoose.model("TestScenarios", CategorySchema, "TestScenarios");
+module.exports = Product = mongoose.model("TestScenarios", ProductSchema, "TestScenarios");
