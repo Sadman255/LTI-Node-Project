@@ -90,6 +90,24 @@ router.post("/search", (req, res) => {
     
 });
 
+router.post('/search/modules', (req,res) =>{
+   let allModules = []
+   Product.find({
+        product: { $regex: new RegExp(req.body.product, "i") },
+      })
+      .then((products) => {
+         allModules = products.map((product) =>{
+           if(product.module){
+             return product.module
+           }
+        })
+        res.json(allModules)
+      })
+      .catch((err) =>
+          res.status(404).json({ noproductsfound: "No Products found" })
+      );
+})
+
 router.post("/create",(req, res) => {
     const { errors, isValid } = validateProductCreateInput(req.body);
 
